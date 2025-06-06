@@ -40,6 +40,25 @@ Refer to the included examples in the repository to learn how to:
 - Use function prototypes for better results
 - Execute generated Python code
 
+## ReAct CLI
+
+The `react_agent.py` script demonstrates a simple ReAct agent using the OpenAI API. Install the `openai` package and set the `OPENAI_API_KEY` environment variable before running.
+
+### Single Query
+
+```bash
+python react_agent.py "What is 2+2?"
+```
+
+### Chatbot Mode
+
+```bash
+python react_agent.py -i
+```
+
+Type `exit` to quit the chat.
+
+
 ## Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request with your improvements.
