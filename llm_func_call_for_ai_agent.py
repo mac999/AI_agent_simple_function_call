@@ -47,6 +47,9 @@ def check_safe_eval(express):
 def preprocess_code(text: str) -> str:
 	try:
 		match = re.search(r'```python\n(.*?)```', text, re.DOTALL) # extract code from text between ```python\n and ```
+		if match is None:
+			print("Error: No python code block found")
+			return ''
 		code = match.group(1).strip()
 		code = code.replace('\t', '    ')
 		code = textwrap.dedent(code)
@@ -200,51 +203,52 @@ coder_chains = (
 	| llm
 )
 
-# python function call test.
-response = query_llm(coder_chains, "g1()") # just generate code to call it
-code = preprocess_code(response.content)
-exec(code)
-
-response = query_llm(coder_chains, "In geoai, load file and sampling it with 3.14, for loop index in loop with 10 times. save it.")
-code = preprocess_code(response.content)
-exec(code)
-
-response = query_llm(coder_chains, "In geoai. Load the file. Sample with 3.14 and the loop index value in the loop. Repeat the loop 10 times. Save the sampled results.")
-code = preprocess_code(response.content)
-exec(code)
-
-response = query_llm(coder_chains, "In BIM. Load the file. Sample with 3.14 and loop index value in the loop. Repeat the loop 10 times. Save the sampled result.")
-code = preprocess_code(response.content)
-exec(code)
-
-input_query = "In robot domain. Position the robot at the origin. There are two balls on the table. The red ball is at position (2,2) and the green ball is at position (10,3). Move 5 positions up from the green ball. Pick up the object at the origin."
-response = query_llm(coder_chains, input_query)
-code = preprocess_code(response.content)
-exec(code)
-
-# define assistant function and chains
-assistant_prompt_tpl = ChatPromptTemplate.from_messages([
-	("system", """You are a helpful AI assistant. If you don't know, answer I don't know."""), MessagesPlaceholder(variable_name="chat_history"),
-	("human", "{input}"),
-])
-
-assistant_chains = (
-	assistant_prompt_tpl
-	| llm
-)
-
-def reasoning_llm(input_query: str) -> str:
+if __name__ == "__main__":
+	# python function call test.
+	response = query_llm(coder_chains, "g1()") # just generate code to call it
+	code = preprocess_code(response.content)
+	exec(code)
+	
+	response = query_llm(coder_chains, "In geoai, load file and sampling it with 3.14, for loop index in loop with 10 times. save it.")
+	code = preprocess_code(response.content)
+	exec(code)
+	
+	response = query_llm(coder_chains, "In geoai. Load the file. Sample with 3.14 and the loop index value in the loop. Repeat the loop 10 times. Save the sampled results.")
+	code = preprocess_code(response.content)
+	exec(code)
+	
+	response = query_llm(coder_chains, "In BIM. Load the file. Sample with 3.14 and loop index value in the loop. Repeat the loop 10 times. Save the sampled result.")
+	code = preprocess_code(response.content)
+	exec(code)
+	
+	input_query = "In robot domain. Position the robot at the origin. There are two balls on the table. The red ball is at position (2,2) and the green ball is at position (10,3). Move 5 positions up from the green ball. Pick up the object at the origin."
 	response = query_llm(coder_chains, input_query)
 	code = preprocess_code(response.content)
 	exec(code)
-	if 'last_result' not in locals():
-		return "I don't know."
-	print(f'\n* Last result *\n{locals()["last_result"]}\n* End of Last result *\n')
-
-	revise_query = f'Already user queried "{input_query}". and I executed the python code you generated, so we took the result which is {locals()["last_result"]}. Answer the question considering the last result values under the user query for human to understand it naturally.'
-	response = query_llm(assistant_chains, revise_query)
-	return response
-
-# Test reasoning with function call
-response = reasoning_llm("In geoai. Load the file. Sample with 3.14 and the loop index value in the loop. Repeat the loop 10 times. How much is the result of the sampling?")
-print(f'Final result: {response.content}')
+	
+	# define assistant function and chains
+	assistant_prompt_tpl = ChatPromptTemplate.from_messages([
+		("system", """You are a helpful AI assistant. If you don't know, answer I don't know."""), MessagesPlaceholder(variable_name="chat_history"),
+		("human", "{input}"),
+	])
+	
+	assistant_chains = (
+		assistant_prompt_tpl
+		| llm
+	)
+	
+	def reasoning_llm(input_query: str) -> str:
+		response = query_llm(coder_chains, input_query)
+		code = preprocess_code(response.content)
+		exec(code)
+		if 'last_result' not in locals():
+			return "I don't know."
+		print(f'\n* Last result *\n{locals()["last_result"]}\n* End of Last result *\n')
+	
+		revise_query = f'Already user queried "{input_query}". and I executed the python code you generated, so we took the result which is {locals()["last_result"]}. Answer the question considering the last result values under the user query for human to understand it naturally.'
+		response = query_llm(assistant_chains, revise_query)
+		return response
+	
+	# Test reasoning with function call
+	response = reasoning_llm("In geoai. Load the file. Sample with 3.14 and the loop index value in the loop. Repeat the loop 10 times. How much is the result of the sampling?")
+	print(f'Final result: {response.content}')
