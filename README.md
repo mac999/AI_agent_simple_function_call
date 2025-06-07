@@ -23,7 +23,7 @@ This project demonstrates a simplified approach to enable Large Language Models 
 
 2. Install the required dependencies:
    ```bash
-   pip install langchain-core langchain-openai
+   pip install langchain-core langchain-openai gradio ollama requests python-dotenv pydantic
    ```
    Additionally, ensure you have the following standard libraries (most are included by default with Python):
 
