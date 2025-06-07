@@ -2,6 +2,8 @@
 
 This project demonstrates a simplified approach to enable Large Language Models (LLMs) like ChatGPT or Llama to perform function calls effectively without relying on complex frameworks. The repository provides examples and tools to execute function calls with clear and predictable outcomes.
 
+<img src="" height="400"/>
+
 ## Features
 
 - Minimal dependencies
