@@ -10,13 +10,15 @@ This project demonstrates a simplified approach to enable Large Language Models 
 - Simplified prompt design with function prototypes
 - Python runtime execution using `exec`
 - Easy-to-understand mechanism
+- Simple ReAct implementation for AI Agent
+- Gemma3 based function call web app example
 
 ## Installation
 
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-repo-name.git
-   cd your-repo-name
+   cd AI_agent_simple_function_call
    ```
 
 2. Install the required dependencies:
@@ -24,17 +26,15 @@ This project demonstrates a simplified approach to enable Large Language Models 
    pip install langchain-core langchain-openai
    ```
    Additionally, ensure you have the following standard libraries (most are included by default with Python):
-   ```bash
-   pip install typing-extensions
-   ```
 
-## Usage
+## Run Simple Function Call 
 
 1. Define your function prototypes in Python.
 2. Customize the prompts as needed.
 3. Run the examples provided to understand the workflow.
-
-## Examples
+```bash
+python llm_func_call_for_ai_agent.py
+```
 
 Refer to the included examples in the repository to learn how to:
 
@@ -42,7 +42,7 @@ Refer to the included examples in the repository to learn how to:
 - Use function prototypes for better results
 - Execute generated Python code
 
-## ReAct CLI
+## Run ReAct CLI
 
 The `react_agent.py` script demonstrates a simple ReAct agent using the OpenAI API. Install the `openai` package and set the `OPENAI_API_KEY` environment variable before running.
 
@@ -60,6 +60,11 @@ python react_agent.py -i
 
 Type `exit` to quit the chat.
 
+## Run Gemma3 based Function Call 
+This source code implements the essential function call method for developing AI agents. It's contents of the Function Call practice using Ollama based on Gemma3 LLM (Large Language Model).
+```bash
+python ai_agent_func_call_gemma3.py
+```
 
 ## Contributing
 
