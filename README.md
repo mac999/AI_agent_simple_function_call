@@ -2,7 +2,7 @@
 
 This project demonstrates a simplified approach to enable Large Language Models (LLMs) like ChatGPT or Llama to perform function calls effectively without relying on complex frameworks. The repository provides examples and tools to execute function calls with clear and predictable outcomes.
 
-<img src="" height="400"/>
+<img src="https://github.com/mac999/AI_agent_simple_function_call/blob/main/gemma3.gif?raw=true" height="400"/>
 
 ## Features
 
