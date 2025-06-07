@@ -4,7 +4,6 @@ This project demonstrates a simplified approach to enable Large Language Models 
 - [Effective and simplified LLM function call for AI agent development](https://medium.com/@laputa99999/effective-and-simplified-llm-function-call-for-ai-agent-development-6ccd6e44a191)
 - [Gemma3-based Funcation Call Implement for AI Agent](https://daddynkidsmakers.blogspot.com/2025/06/gemma3-ollama-function-call.html)
 
-</br>
 <img src="https://github.com/mac999/AI_agent_simple_function_call/blob/main/gemma3.gif?raw=true" height="400"/>
 
 ## Features
