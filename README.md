@@ -17,7 +17,7 @@ This project demonstrates a simplified approach to enable Large Language Models 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo-name.git
+   git clone https://github.com/mac999/AI_agent_simple_function_call.git
    cd AI_agent_simple_function_call
    ```
 
