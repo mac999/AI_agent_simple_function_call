@@ -1,0 +1,83 @@
+<svg width="700" height="900" xmlns="http://www.w3.org/2000/svg">
+  <!-- 시작 -->
+  <rect x="270" y="20" width="160" height="40" rx="10" fill="white" stroke="black"/>
+  <text x="350" y="45" font-size="16" text-anchor="middle">Gradio 앱 시작</text>
+  
+  <!-- 사용자 입력 -->
+  <rect x="270" y="80" width="160" height="40" rx="10" fill="white" stroke="black"/>
+  <text x="350" y="105" font-size="16" text-anchor="middle">사용자 입력</text>
+  
+  <!-- process_message 호출 -->
+  <rect x="220" y="140" width="260" height="40" rx="10" fill="white" stroke="black"/>
+  <text x="350" y="165" font-size="16" text-anchor="middle">process_message 함수 호출</text>
+  
+  <!-- 사용자 메시지 기록 -->
+  <rect x="220" y="200" width="260" height="40" rx="10" fill="white" stroke="black"/>
+  <text x="350" y="225" font-size="16" text-anchor="middle">사용자 메시지 chat_history에 추가</text>
+  
+  <!-- 메시지 리스트 생성 -->
+  <rect x="220" y="260" width="260" height="40" rx="10" fill="white" stroke="black"/>
+  <text x="350" y="285" font-size="16" text-anchor="middle">messages 리스트 생성</text>
+  
+  <!-- ollama.chat 호출 -->
+  <rect x="220" y="320" width="260" height="40" rx="10" fill="white" stroke="black"/>
+  <text x="350" y="345" font-size="16" text-anchor="middle">ollama.chat로 모델 응답 요청</text>
+  
+  <!-- 함수 호출 파싱 -->
+  <rect x="220" y="380" width="260" height="40" rx="10" fill="white" stroke="black"/>
+  <text x="350" y="405" font-size="16" text-anchor="middle">함수 호출 파싱 (parse_function_call)</text>
+  
+  <!-- 조건 분기 -->
+  <rect x="270" y="440" width="160" height="40" rx="10" fill="white" stroke="black"/>
+  <text x="350" y="465" font-size="16" text-anchor="middle">google_search 호출?</text>
+  
+  <!-- 예(Yes) 화살표 -->
+  <line x1="350" y1="480" x2="350" y2="520" stroke="black" marker-end="url(#arrow)"/>
+  <text x="360" y="500" font-size="14">예</text>
+  
+  
+  <!-- 함수 호출 분기: 예 -->
+  <rect x="220" y="520" width="260" height="40" rx="10" fill="white" stroke="black"/>
+  <text x="350" y="545" font-size="16" text-anchor="middle">검색 쿼리 추출 및 검색 안내 추가</text>
+  
+  <rect x="220" y="580" width="260" height="40" rx="10" fill="white" stroke="black"/>
+  <text x="350" y="605" font-size="16" text-anchor="middle">google_search 실행</text>
+  
+  <rect x="220" y="640" width="260" height="40" rx="10" fill="white" stroke="black"/>
+  <text x="350" y="665" font-size="16" text-anchor="middle">검색 결과 chat_history에 추가</text>
+  
+  <rect x="220" y="700" width="260" height="40" rx="10" fill="white" stroke="black"/>
+  <text x="350" y="725" font-size="16" text-anchor="middle">검색 결과 기반 모델 재질문</text>
+  
+  <rect x="220" y="760" width="260" height="40" rx="10" fill="white" stroke="black"/>
+  <text x="350" y="785" font-size="16" text-anchor="middle">최종 응답 chat_history에 추가</text>
+    
+  <!-- 종료 -->
+  <rect x="270" y="830" width="160" height="40" rx="10" fill="white" stroke="black"/>
+  <text x="350" y="855" font-size="16" text-anchor="middle">채팅 기록 반환</text>
+  
+  <!-- 화살표 정의 -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="black"/>
+    </marker>
+  </defs>
+  
+  <!-- 순서 연결선 -->
+  <line x1="350" y1="60" x2="350" y2="80" stroke="black" marker-end="url(#arrow)"/>
+  <line x1="350" y1="120" x2="350" y2="140" stroke="black" marker-end="url(#arrow)"/>
+  <line x1="350" y1="180" x2="350" y2="200" stroke="black" marker-end="url(#arrow)"/>
+  <line x1="350" y1="240" x2="350" y2="260" stroke="black" marker-end="url(#arrow)"/>
+  <line x1="350" y1="300" x2="350" y2="320" stroke="black" marker-end="url(#arrow)"/>
+  <line x1="350" y1="360" x2="350" y2="380" stroke="black" marker-end="url(#arrow)"/>
+  <line x1="350" y1="420" x2="350" y2="440" stroke="black" marker-end="url(#arrow)"/>
+  
+  <!-- 예 분기 연결선 -->
+  <line x1="350" y1="480" x2="350" y2="520" stroke="black" marker-end="url(#arrow)"/>
+  <line x1="350" y1="560" x2="350" y2="580" stroke="black" marker-end="url(#arrow)"/>
+  <line x1="350" y1="620" x2="350" y2="640" stroke="black" marker-end="url(#arrow)"/>
+  <line x1="350" y1="680" x2="350" y2="700" stroke="black" marker-end="url(#arrow)"/>
+  <line x1="350" y1="740" x2="350" y2="760" stroke="black" marker-end="url(#arrow)"/>
+  <line x1="350" y1="800" x2="350" y2="830" stroke="black" marker-end="url(#arrow)"/>
+  
+</svg>
